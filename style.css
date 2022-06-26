@@ -35,6 +35,7 @@ header {
   height: 500px;
   width: 350px;
   border: 2px solid black;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +45,7 @@ header {
 }
 
 .screen {
+  border-radius: 10px;
   width: 90%;
   height: 15%;
   border: 1px solid black;
@@ -51,6 +53,35 @@ header {
 
 .keypads {
   width: 90%;
-  height: 80%;
+  height: 78%;
   border: 1px solid black;
+  padding: 5px;
+  display: grid;
+  gap: 5px;
+  grid-template-areas: 
+    'clear    btn-div  btn-mul backspace'
+    'btn-7    btn-8    btn-9    btn-add'
+    'btn-4    btn-5    btn-6    btn-sub'
+    'btn-1    btn-2    btn-3    btn-equal'
+    'btn-mod  btn-0    btn-dot  btn-equal'
+  ;
 }
+
+/* Button Settings */
+button {
+  width: 75px;
+}
+
+/* Buttons Grid Layout */
+.btn-clear {grid-area: clear; }
+.btn-backspace {grid-area: backspace; }
+
+#btn-dot {grid-area: btn-dot;}
+
+#btn-add {grid-area: btn-add; }
+#btn-sub {grid-area: btn-sub; }
+#btn-mul {grid-area: btn-mul; }
+#btn-div {grid-area: btn-div; }
+#btn-mod {grid-area: btn-mod; }
+#btn-equal {grid-area: btn-equal }
+
