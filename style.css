@@ -4,10 +4,11 @@
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-  height: 99vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,32 +33,52 @@ header {
 }
 
 .calculator-container {
-  height: 500px;
+  height: 550px;
   width: 350px;
+  background: #333;
   border: 2px solid black;
   border-radius: 15px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 15px 5px;
   gap: 10px;
 }
 
 .screen {
+  background-color: #B3C484 ;
   border-radius: 10px;
   width: 90%;
-  height: 15%;
+  height: 20%;
   border: 1px solid black;
 }
 
+/* Button Settings */
+button {
+  width: 100%;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+
+/* Buttons Grid Layout */
 .keypads {
-  width: 90%;
-  height: 78%;
-  border: 1px solid black;
-  padding: 5px;
+  width: 95%;
+  height: 80%;
   display: grid;
-  gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas: 
     'clear    btn-div  btn-mul backspace'
     'btn-7    btn-8    btn-9    btn-add'
@@ -65,16 +86,12 @@ header {
     'btn-1    btn-2    btn-3    btn-equal'
     'btn-mod  btn-0    btn-dot  btn-equal'
   ;
+  gap: 5px;
+  padding: 10px;
 }
 
-/* Button Settings */
-button {
-  width: 75px;
-}
-
-/* Buttons Grid Layout */
-.btn-clear {grid-area: clear; }
-.btn-backspace {grid-area: backspace; }
+#btn-clear {grid-area: clear; }
+#btn-backspace {grid-area: backspace; }
 
 #btn-dot {grid-area: btn-dot;}
 
@@ -85,3 +102,14 @@ button {
 #btn-mod {grid-area: btn-mod; }
 #btn-equal {grid-area: btn-equal }
 
+.operations {
+  font-size: 30px;
+  background-color: #555;
+  color: #00ff00;
+}
+
+#backspace-img {
+  max-width: 30px;
+  padding-right: 5px;
+  filter: invert(51%) sepia(72%) saturate(2086%) hue-rotate(82deg) brightness(119%) contrast(122%);
+}
