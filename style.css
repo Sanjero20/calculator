@@ -34,8 +34,9 @@ header {
 }
 
 .calculator-container {
-  height: 550px;
-  width: 350px;
+  margin: 20px 0;
+  min-height: 550px;
+  min-width: 350px;
   background: #333;
   border: 2px solid black;
   border-radius: 15px;
@@ -138,21 +139,7 @@ button:active {
 
 @media (max-width: 768px) {
   .calculator-container {
-    height: 425px;
-    width: 275px;
-  }
-
-  button {
-    font-size: 20px;
-  }
-
-  #btn-clear,
-  #btn-backspace,
-  #btn-equal,
-  .operations {
-    font-size: 25px;
-  }
-  #backspace-img {
-    max-width: 25px;
+    min-height: 425px;
+    min-width: 275px;
   }
 }

@@ -86,15 +86,6 @@ function compute() {
   prevOperand = "";
 }
 
-function updateDisplay() {
-  lower_screen.innerHTML = currOperand;
-  upper_screen.innerHTML = prevOperand;
-
-  if (prevOperand != "") {
-    upper_screen.innerHTML = `${prevOperand} ${currentOperation}`;
-  }
-}
-
 // Operation Functions
 function add(a, b) { return a + b; }
 function sub(a, b) { return a - b; }
@@ -107,8 +98,6 @@ function div(a, b) {
 }
 function mod(a, b) { return a % b; }
 
-
-
 // Other functions 
 function appendNumber(next) {
   checkForError();
@@ -116,6 +105,15 @@ function appendNumber(next) {
   if (next === "." && str.includes(".")) return;
   let value = `${str}${next}`
   return value;
+}
+
+function updateDisplay() {
+  lower_screen.innerHTML = currOperand;
+  upper_screen.innerHTML = prevOperand;
+
+  if (prevOperand != "") {
+    upper_screen.innerHTML = `${prevOperand} ${currentOperation}`;
+  }
 }
 
 function clearAll() {
