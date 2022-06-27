@@ -55,20 +55,25 @@ header {
   height: 20%;
   margin-top: 10px;
   border: 1px solid black;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .screen div {
-  padding-right: 5px;
+  padding-right: 10px;
   min-height: 40px;
   display: flex;
   justify-content: end;
   font-weight: bold;
 }
-.screen .upper-display { font-size: 20px;}
-.screen .lower-display { font-size: 30px; }
+.screen .upper-display { 
+  padding-top: 5px;
+  font-size: 20px;
+}
+.screen .lower-display { font-size: 35px; }
 
 /* Button Settings */
 button {
@@ -116,6 +121,9 @@ button:active {
 #btn-mod {grid-area: btn-mod; }
 #btn-equal {grid-area: btn-equal }
 
+#btn-clear,
+#btn-backspace,
+#btn-equal,
 .operations {
   font-size: 30px;
   background-color: #555;
