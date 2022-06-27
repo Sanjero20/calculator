@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <title>Calculator</title>
 </head>
 <body>
@@ -14,10 +14,13 @@
   </header>
 
   <div class="calculator-container">
-    <div class="screen">
+    <section class="screen">
       <!-- Display -->
-    </div>
-    <div class="keypads">
+      <div class="upper-display"> </div>
+      <div class="lower-display"> </div>
+    </section>
+
+    <section class="keypads">
         <button class="operations" id="btn-clear">AC</button>
         <button class="operations" id="btn-backspace">
           <img id=backspace-img src="./images/backspace.png">
@@ -35,17 +38,16 @@
         <button class="numbers" id="btn-2">2</button>
         <button class="numbers" id="btn-3">3</button>
 
-        <button class="numbers"   id="btn-dot">.</button>
+        <button id="btn-dot">.</button>
         <button class="numbers"   id="btn-0">0</button>
         <button class="operations" id="btn-equal">=</button>
-
 
         <button class="operations" id="btn-add">+</button>
         <button class="operations" id="btn-sub">-</button>
         <button class="operations" id="btn-mul">×</button>
         <button class="operations" id="btn-div">÷</button>
         <button class="operations" id="btn-mod">%</button>
-    </div>
+    </section>
   </div>
 
   <footer>

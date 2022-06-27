@@ -27,8 +27,9 @@ footer {
 }
 
 header {
+  height: 75px;
   padding: 10px;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -52,13 +53,27 @@ header {
   border-radius: 10px;
   width: 90%;
   height: 20%;
+  margin-top: 10px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.screen div {
+  padding-right: 5px;
+  min-height: 40px;
+  display: flex;
+  justify-content: end;
+  font-weight: bold;
+}
+.screen .upper-display { font-size: 20px;}
+.screen .lower-display { font-size: 30px; }
 
 /* Button Settings */
 button {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 20px;
   font-weight: bold;
   border: none;
@@ -70,7 +85,6 @@ button {
 button:active {
   transform: scale(0.9);
 }
-
 
 /* Buttons Grid Layout */
 .keypads {
