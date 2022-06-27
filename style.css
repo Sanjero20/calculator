@@ -135,3 +135,24 @@ button:active {
   padding-right: 5px;
   filter: invert(51%) sepia(72%) saturate(2086%) hue-rotate(82deg) brightness(119%) contrast(122%);
 }
+
+@media (max-width: 768px) {
+  .calculator-container {
+    height: 425px;
+    width: 275px;
+  }
+
+  button {
+    font-size: 20px;
+  }
+
+  #btn-clear,
+  #btn-backspace,
+  #btn-equal,
+  .operations {
+    font-size: 25px;
+  }
+  #backspace-img {
+    max-width: 25px;
+  }
+}
