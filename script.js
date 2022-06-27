@@ -81,9 +81,16 @@ function compute() {
     default:
       return;
   }
-  currOperand = total;
-  operation = undefined;
-  prevOperand = "";
+  if (total == "Math Error") {
+    currOperand = total;
+    operation = undefined;
+    prevOperand = "";
+  } else {
+    currOperand = total;
+    currOperand = Math.round(total * 1000) / 1000;
+    operation = undefined;
+    prevOperand = "";
+  }
 }
 
 // Operation Functions
@@ -96,7 +103,12 @@ function div(a, b) {
   }
   return a / b; 
 }
-function mod(a, b) { return a % b; }
+function mod(a, b) { 
+  if (b <= 0) {
+    return "Math Error";
+  }
+  return a % b; 
+}
 
 // Other functions 
 function appendNumber(next) {

@@ -52,7 +52,7 @@ header {
 .screen {
   background-color: #B3C484 ;
   border-radius: 10px;
-  width: 90%;
+  width: 300px;
   height: 20%;
   margin-top: 10px;
   border: 1px solid black;
@@ -141,5 +141,9 @@ button:active {
   .calculator-container {
     min-height: 425px;
     min-width: 275px;
+  }
+
+  .screen {
+    width: 230px;
   }
 }
