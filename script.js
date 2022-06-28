@@ -16,8 +16,7 @@ const btnEqual = document.getElementById('btn-equal');
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     let number = button.textContent
-    currOperand =  appendNumber(number);
-    updateDisplay();
+    appendNumber(number);
   })
 })
 
@@ -28,30 +27,18 @@ btnOperations.forEach(button => {
   })
 })
 
-btnClear.addEventListener('click', () => {
-  currOperand = "";
-  prevOperand = "";
-  updateDisplay();
-})
-btnBSpace.addEventListener('click', () => {
-  checkForError();
-  let str = getValue();
-  currOperand = str.substring(0, str.length-1);
-  updateDisplay();
-})
+btnClear.addEventListener('click', clearAll)
+btnBSpace.addEventListener('click', delNumber)
+btnEqual.addEventListener('click', compute)
 
-btnEqual.addEventListener('click', () => {
-  compute()
-  updateDisplay()
-})
+window.addEventListener('keydown', keyboardHandler);
 
 // Calculator functions
 function selectOperation(operation) {
   if (currOperand == "Math Error") return;
   if (currOperand === "") return;
-  if (prevOperand !== "") {
-    compute();
-  }
+  if (prevOperand !== "") compute();
+  
   currentOperation = operation;
   prevOperand = currOperand;
   currOperand = "";
@@ -87,10 +74,12 @@ function compute() {
     prevOperand = "";
   } else {
     currOperand = total;
-    currOperand = Math.round(total * 1000) / 1000;
+    currOperand = Math.round(total * 100000) / 100000;
     operation = undefined;
     prevOperand = "";
   }
+
+  updateDisplay()
 }
 
 // Operation Functions
@@ -101,28 +90,25 @@ function div(a, b) {
   if (b <= 0) {
     return "Math Error";
   }
-  return a / b; 
-}
+  return a / b; }
 function mod(a, b) { 
   if (b <= 0) {
     return "Math Error";
   }
-  return a % b; 
-}
+  return a % b; }
 
 // Other functions 
 function appendNumber(next) {
   checkForError();
   let str = getValue();
   if (next === "." && str.includes(".")) return;
-  let value = `${str}${next}`
-  return value;
+  currOperand = `${str}${next}`
+  updateDisplay();
 }
 
 function updateDisplay() {
   lower_screen.innerHTML = currOperand;
   upper_screen.innerHTML = prevOperand;
-
   if (prevOperand != "") {
     upper_screen.innerHTML = `${prevOperand} ${currentOperation}`;
   }
@@ -134,14 +120,42 @@ function clearAll() {
   updateDisplay();
 }
 
+function delNumber() {
+  checkForError();
+  let str = getValue();
+  currOperand = str.substring(0, str.length-1);
+  updateDisplay();
+}
+
 function getValue() {
-  // Gets the current Operand
-  let value = lower_screen.textContent.trim()
-  return value;
+  return lower_screen.textContent.trim()
 }
 
 function checkForError() {
   if (currOperand == "Math Error") {
     clearAll();
   }
+}
+
+function keyboardHandler(e) {
+  if (e.key >=0 && e.key <= 9 || e.key === '.') appendNumber(e.key)
+  if (e.key === 'Backspace') delNumber()
+  if (e.key === 'Escape') clearAll()
+  if (e.key === 'Enter') compute()
+  if (e.key === '+' || e.key === '-' 
+   || e.key === '*' || e.key === '/' || e.key === '%') {
+    console.log(e.key)
+    let op = convertKeyboardOperation(e.key)
+    selectOperation(op)
+    updateDisplay()
+    compute()
+   }
+}
+
+function convertKeyboardOperation(key) {
+  if (key === '+') return "+" 
+  if (key === '-') return "-"
+  if (key === '*') return "×" 
+  if (key === '/') return "÷"
+  if (key === '%') return "%"
 }
