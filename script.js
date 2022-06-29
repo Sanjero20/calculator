@@ -37,16 +37,19 @@ window.addEventListener('keydown', keyboardHandler);
 function selectOperation(operation) {
   if (currOperand == "Math Error") return;
 
-  if (operation === "-" && currOperand === "" && currentOperation  !== "-") {
+  if (operation === "-" && currOperand === "") {
+    currentOperation = operation;
+    if (prevOperand !== "" && currentOperation === "-") return;
     currOperand += operation;
     return;
   }
-  if (currOperand === "-" && currOperand.length <= 1) return;
 
   if (currOperand === "" && operation !== "-") {
     currentOperation = operation;
     return;
   }
+
+  if (currOperand === "-" && currOperand.length <= 1) return;
 
   if (prevOperand !== "") compute();
   currentOperation = operation;
@@ -111,7 +114,7 @@ function mod(a, b) {
 function appendNumber(next) {
   checkForError();
   let str = getValue();
-  if (!str.includes(".") && str == "0" && next == "0") return;
+  if (!str.includes(".") && str == "0") return;
   if (next === "." && str.includes(".")) return;
   currOperand = `${str}${next}`
   updateDisplay();
