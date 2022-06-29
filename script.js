@@ -1,4 +1,3 @@
-let temp;
 let currentOperation = undefined;
 let prevOperand = "";
 let currOperand = "";
@@ -36,9 +35,18 @@ window.addEventListener('keydown', keyboardHandler);
 // Calculator functions
 function selectOperation(operation) {
   if (currOperand == "Math Error") return;
-  if (currOperand === "") return;
+  if (operation === "-" && currOperand === "") {
+    currOperand += operation;
+    return;
+  }
+  if (currOperand === "-" && currOperand.length <= 1) return;
+
+  if (currOperand === "" && operation !== "-") {
+    currentOperation = operation;
+    return;
+  }
+
   if (prevOperand !== "") compute();
-  
   currentOperation = operation;
   prevOperand = currOperand;
   currOperand = "";
@@ -87,12 +95,12 @@ function add(a, b) { return a + b; }
 function sub(a, b) { return a - b; }
 function mul(a, b) { return a * b; }
 function div(a, b) { 
-  if (b <= 0) {
+  if (b === 0) {
     return "Math Error";
   }
   return a / b; }
 function mod(a, b) { 
-  if (b <= 0) {
+  if (b === 0) {
     return "Math Error";
   }
   return a % b; }
