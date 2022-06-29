@@ -21,7 +21,8 @@ buttons.forEach(button => {
 
 btnOperations.forEach(button => {
   button.addEventListener('click', () => {
-    selectOperation(button.textContent)
+    let op = convertKeyboardOperation(button.textContent)
+    selectOperation(op)
     updateDisplay();
   })
 })
@@ -35,7 +36,8 @@ window.addEventListener('keydown', keyboardHandler);
 // Calculator functions
 function selectOperation(operation) {
   if (currOperand == "Math Error") return;
-  if (operation === "-" && currOperand === "") {
+
+  if (operation === "-" && currOperand === "" && currentOperation  !== "-") {
     currOperand += operation;
     return;
   }
@@ -70,7 +72,7 @@ function compute() {
     case "÷":
       total = div(a, b);
       break;
-    case "%":
+    case "mod":
       total = mod(a, b);
       break;
     default:
@@ -109,6 +111,7 @@ function mod(a, b) {
 function appendNumber(next) {
   checkForError();
   let str = getValue();
+  if (!str.includes(".") && str == "0" && next == "0") return;
   if (next === "." && str.includes(".")) return;
   currOperand = `${str}${next}`
   updateDisplay();
@@ -165,5 +168,6 @@ function convertKeyboardOperation(key) {
   if (key === '-') return "-"
   if (key === '*') return "×" 
   if (key === '/') return "÷"
-  if (key === '%') return "%"
+  if (key === '%') return "mod"
+  return key;
 }
