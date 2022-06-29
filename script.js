@@ -114,6 +114,10 @@ function mod(a, b) {
 function appendNumber(next) {
   checkForError();
   let str = getValue();
+  if (str == "0" && next === ".") {
+    currOperand = `${str}${next}`
+    updateDisplay();
+  }
   if (!str.includes(".") && str == "0") return;
   if (next === "." && str.includes(".")) return;
   currOperand = `${str}${next}`
